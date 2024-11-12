@@ -8,134 +8,58 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: LoginPage(),
-    );
-  }
-}
-
-class LoginPage extends StatefulWidget {
-  @override
-  _LoginPageState createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  //untuk email dan password
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  void _login() {
-    String email = _emailController.text;
-    String password = _passwordController.text;
-
-    if (email.isEmpty || password.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter both email and password')),
-      );
-    } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Logging in...')),
-      );
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.flutter_dash, //icon
-                      size: 50,
-                      color: Colors.blue,
-                    ),
-                    SizedBox(width: 10),
-                    Text(
-                      'FLUTTER',
-                      style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 40),
-                // Kolom untuk Email
-                TextField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Enter your email',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(Icons.email),
-                  ),
-                ),
-                SizedBox(height: 20),
-                // Kolom untuk Password
-                TextField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    prefixIcon: Icon(Icons.lock),
-                  ),
-                ),
-                SizedBox(height: 30),
-                // Tombol Login
-                ElevatedButton(
-                  onPressed: _login,
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Container Text Example'),
+        ),
+        body: Center(
+          child: Container(
+            width: double.infinity,
+            margin: const EdgeInsets.all(12),
+            height: 200,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(12),
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 201, 211, 4),
+                  Color.fromARGB(255, 19, 147, 245),
+                  Color.fromARGB(255, 0, 72, 255),
+                  Color.fromARGB(255, 196, 64, 64),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16.0), // Adjust padding as needed
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start, // Left-align text
+                children: [
+                  const Text(
+                    'Container Widget',
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
-                  child: Text('Login', style: TextStyle(fontSize: 18)),
-                ),
-                SizedBox(height: 20),
-                // Lupa Password dan Sign Up
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        //lupa password
-                      },
-                      child: Text('Forgot Password?',
-                          style: TextStyle(color: Colors.blue)),
+                  const SizedBox(height: 8),
+                  const Divider(color: Colors.black),
+                  const Text(
+                    'sallim & aditya',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: 40,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('visit to read more'),
                     ),
-                    Text('|'),
-                    TextButton(
-                      onPressed: () {
-                        //daftar
-                      },
-                      child:
-                          Text('Sign Up', style: TextStyle(color: Colors.blue)),
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
